@@ -1,23 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
 
+import { Routes, Route } from 'react-router-dom';
+import { Subreddit } from './components/Subreddit/Subreddit';
+import { Post } from './components/Post/Post';
+import { Header } from './components/Header/Header';
+import { SubredditMenu } from './components/SubredditMenu/SubredditMenu';
+import { SearchResults } from './components/SearchResults/SearchResults';
+
+
+
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <main>
+        <Routes>
+          <Route path='/' element={<Subreddit/>}/>
+          <Route path='/search' element={<SearchResults/>} />
+          <Route path='/:subreddit' element={<Subreddit/>} />
+          <Route path='/:subreddit/:postId' element={<Post/>} />
+        </Routes>
+      </main>
     </div>
   );
 }
